@@ -760,11 +760,14 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2024 جودة الضيافة للخدمات التموينية - جميع الحقوق محفوظة</p>
+            <p>© <span id="copyright-year">2026</span> جودة الضيافة للخدمات التموينية - جميع الحقوق محفوظة</p>
         </div>
     </footer>
 
     <script>
+        // Set dynamic copyright year
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
