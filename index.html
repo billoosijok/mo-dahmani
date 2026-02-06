@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جودة الضيافة للخدمات التموينية</title>
+    <title>جودة الضيافة - للخدمات التموينية</title>
+    <meta name="description" content="نلتزم في شركة جودة الضيافة بتقديم وجبات تموينية مُعدّة بعناية وفق أعلى معايير الجودة والسلامة الغذائية، باستخدام مواد أولية مختارة وتحت إشراف مهني يضمن الطعم المميز والقيمة الغذائية، والالتزام الكامل باشتراطات الصحة والاعتماد." />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -37,7 +38,7 @@
         /* Header */
         header {
             background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--primary-bg) 100%);
-            padding: 20px 0;
+            padding: 10px 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -49,34 +50,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-icon svg {
-            width: 30px;
-            height: 30px;
-            fill: var(--primary-bg);
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-gold);
         }
 
         .nav-links {
@@ -94,6 +67,113 @@
 
         .nav-links a:hover {
             color: var(--accent-gold);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(10, 46, 46, 0.98) 0%, rgba(13, 61, 61, 0.98) 100%);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .mobile-nav-links li {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active .mobile-nav-links li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.8rem;
+            transition: color 0.3s, transform 0.3s;
+            padding: 10px 20px;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--accent-gold);
+            transform: scale(1.1);
         }
 
         /* Hero Section */
@@ -125,24 +205,6 @@
             z-index: 1;
         }
 
-        .hero-logo {
-            width: 120px;
-            height: 120px;
-            background: var(--accent-gold);
-            border-radius: 50%;
-            margin: 0 auto 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 40px rgba(201, 162, 39, 0.3);
-        }
-
-        .hero-logo svg {
-            width: 70px;
-            height: 70px;
-            fill: var(--primary-bg);
-        }
-
         .hero h1 {
             font-size: 3.5rem;
             color: var(--accent-gold);
@@ -163,6 +225,7 @@
             margin: 0 auto 40px;
             color: var(--text-cream);
             opacity: 0.9;
+            padding: 5px;
         }
 
         .cta-button {
@@ -319,6 +382,7 @@
         .menu-card-header h3 {
             color: var(--primary-bg);
             font-size: 1.5rem;
+            flex: 1;
         }
 
         .menu-price {
@@ -489,6 +553,14 @@
                 display: none;
             }
 
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu-overlay {
+                display: block;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -527,7 +599,7 @@
     <header>
         <nav class="container">
             <div class="logo">
-                <span class="logo-text">جودة الضيافة</span>
+                <img src="./logo.png" height="50" />
             </div>
             <ul class="nav-links">
                 <li><a href="#home">الرئيسية</a></li>
@@ -536,13 +608,29 @@
                 <li><a href="#menu">قائمة الطعام</a></li>
                 <li><a href="#contact">تواصل معنا</a></li>
             </ul>
+            <button class="mobile-menu-toggle" aria-label="القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+        <ul class="mobile-nav-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#experience">خبراتنا</a></li>
+            <li><a href="#menu">قائمة الطعام</a></li>
+            <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>جودة الضيافة</h1>
+            <img src="./logo.png" height="110" />
             <h2>للخدمات التموينية</h2>
             <p>نلتزم في شركة جودة الضيافة بتقديم وجبات تموينية مُعدّة بعناية وفق أعلى معايير الجودة والسلامة الغذائية، باستخدام مواد أولية مختارة وتحت إشراف مهني يضمن الطعم المميز والقيمة الغذائية، والالتزام الكامل باشتراطات الصحة والاعتماد.</p>
             <a href="#contact" class="cta-button">تواصل معنا</a>
@@ -557,7 +645,7 @@
             <h2 class="section-title">من نحن</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>شركة جودة الضيافة للتعهدات والخدمات التموينية تتمتع بخبرة عملية في تنفيذ خدمات الإعاشة والتموين في المواقع وبيئات العمل الخاصة في الحقول النفطية، وبما يتوافق مع متطلبات السلامة والجودة المعتمدة.</p>
+                    <p>شركة جودة الضيافة للتعهدات والخدمات التموينية تتمتع بخبرة عملية في تنفيذ خدمات الإعاشة والتموين في المواقع وبيئات العمل الخاصة في الحقول النفطية، بالإضافة إلى المؤسسات والمراكز الإدارية والخدميّة. وبما يتوافق مع متطلبات السلامة والجودة المعتمدة.</p>
                     <p>نحن نفخر بتقديم خدمات تموينية متكاملة تشمل الطبخ والتنظيف والخدمات اللوجستية، مع الالتزام بأعلى معايير النظافة والجودة.</p>
                 </div>
                 <div class="about-features-wrapper">
@@ -594,6 +682,10 @@
                 <div class="experience-card">
                     <h3>شركة الساقي</h3>
                     <p>تنفيذ خدمات الإعاشة والتموين لصالح شركة الساقي</p>
+                </div>
+                <div class="experience-card">
+                    <h3>المؤسسات والمراكز الإدارية والخدمية</h3>
+                    <p>تقديم خدمات تموينية متكاملة للمؤسسات والمراكز الإدارية والخدمية بمعايير جودة عالية</p>
                 </div>
             </div>
         </div>
@@ -767,6 +859,35 @@
     <script>
         // Set dynamic copyright year
         document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            document.body.style.overflow = this.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu when clicking on a link
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        mobileMenuOverlay.addEventListener('click', function(e) {
+            if (e.target === this) {
+                mobileMenuToggle.classList.remove('active');
+                this.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
 
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
